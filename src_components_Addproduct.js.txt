@@ -1,0 +1,32 @@
+﻿import React, { useState } from "react";
+
+
+function AddProduct({ onAdd }) {
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [desc, setDesc] = useState("");
+  const [image, setImage] = useState("");
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onAdd({ name, price: Number(price), description: desc, image });
+  };
+
+
+  return (
+    <div>
+      <h2>➕ إضافة منتج</h2>
+      <form onSubmit={handleSubmit}>
+        <input placeholder="اسم المنتج" value={name} onChange={(e) => setName(e.target.value)} /><br />
+        <input placeholder="السعر بالـ π" value={price} onChange={(e) => setPrice(e.target.value)} /><br />
+        <input placeholder="الوصف" value={desc} onChange={(e) => setDesc(e.target.value)} /><br />
+        <input placeholder="رابط صورة المنتج" value={image} onChange={(e) => setImage(e.target.value)} /><br />
+        <button type="submit">إضافة</button>
+      </form>
+    </div>
+  );
+}
+
+
+export default AddProduct;
