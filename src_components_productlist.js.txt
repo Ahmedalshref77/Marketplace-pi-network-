@@ -1,0 +1,23 @@
+﻿import React from "react";
+
+
+function ProductList({ products, onSelect }) {
+  return (
+    <div>
+      <h2>قائمة المنتجات</h2>
+      <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
+        {products.map((p) => (
+          <div key={p.id} style={{ border: "1px solid #ccc", padding: "10px", width: "150px" }}>
+            <img src={p.image} alt={p.name} width="100%" />
+            <h3>{p.name}</h3>
+            <p>{p.price} π</p>
+            <button onClick={() => onSelect(p)}>تفاصيل</button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+
+export default ProductList;
